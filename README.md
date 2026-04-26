@@ -3,13 +3,13 @@
 A full-stack multilingual (Hindi/English) hospital queue and triage system powered by Claude AI.
 
 ## Features
-- 🤖 **AI Triage** — Claude analyzes symptoms and assigns urgency (HIGH/MEDIUM/LOW)
-- 🗣️ **Voice Input** — Hindi & English speech-to-text via Web Speech API
-- 📋 **Priority Queue** — Min-heap queue: HIGH (tokens 1–20), MEDIUM (21–60), LOW (61+)
-- 📡 **Real-time** — WebSockets (Socket.io) sync doctor dashboard live
-- 🌐 **Bilingual** — Full Hindi/English UI with localized AI responses
-- 🏥 **ABHA Support** — ABHA Health ID field for patient linking
-- 📱 **QR Token** — QR-coded tokens for reception check-in
+-  **AI Triage** — Claude analyzes symptoms and assigns urgency (HIGH/MEDIUM/LOW)
+-  **Voice Input** — Hindi & English speech-to-text via Web Speech API
+-  **Priority Queue** — Min-heap queue: HIGH (tokens 1–20), MEDIUM (21–60), LOW (61+)
+-  **Real-time** — WebSockets (Socket.io) sync doctor dashboard live
+-  **Bilingual** — Full Hindi/English UI with localized AI responses
+-  **ABHA Support** — ABHA Health ID field for patient linking
+-  **QR Token** — QR-coded tokens for reception check-in
 
 ## Tech Stack
 - **Frontend**: React 18, Socket.io-client, qrcode.react
