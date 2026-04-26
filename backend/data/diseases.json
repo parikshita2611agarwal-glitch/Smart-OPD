@@ -1,0 +1,268 @@
+{
+  "version": "1.0",
+  "description": "Smart OPD Disease Risk Dataset — used by AI to score patient symptoms",
+  "tiers": {
+    "EMERGENCY": { "weight": 0.50, "tokenStart": 1,  "tokenEnd": 50,  "label": "Emergency"  },
+    "SERIOUS":   { "weight": 0.25, "tokenStart": 51, "tokenEnd": 75,  "label": "Serious"    },
+    "CHECKUP":   { "weight": 0.15, "tokenStart": 76, "tokenEnd": 90,  "label": "Checkup"    },
+    "MINOR":     { "weight": 0.10, "tokenStart": 91, "tokenEnd": 100, "label": "Minor"      }
+  },
+  "doctorTimeMinutes": {
+    "EMERGENCY": 20,
+    "SERIOUS":   15,
+    "CHECKUP":   10,
+    "MINOR":      5
+  },
+  "dailyCapacity": 160,
+  "diseases": [
+    {
+      "name": "Cardiac Arrest",
+      "keywords": ["heart attack", "cardiac arrest", "chest pain left arm", "crushing chest pain", "jaw pain chest", "heart stopped"],
+      "riskScore": 97,
+      "tier": "EMERGENCY",
+      "department": "Cardiology",
+      "reason": "Life-threatening cardiac event — minutes determine survival"
+    },
+    {
+      "name": "Stroke",
+      "keywords": ["stroke", "face drooping", "arm weakness sudden", "speech slurred", "sudden confusion", "cannot speak", "FAST symptoms", "face numb"],
+      "riskScore": 96,
+      "tier": "EMERGENCY",
+      "department": "Neurology",
+      "reason": "Brain cells die every minute without treatment"
+    },
+    {
+      "name": "Severe Respiratory Distress",
+      "keywords": ["cannot breathe", "severe breathlessness", "lips turning blue", "gasping", "choking", "oxygen very low", "asphyxiation"],
+      "riskScore": 93,
+      "tier": "EMERGENCY",
+      "department": "Pulmonology",
+      "reason": "Imminent respiratory failure — airway at risk"
+    },
+    {
+      "name": "Major Trauma",
+      "keywords": ["accident", "heavy bleeding", "multiple fractures", "severe head injury", "road accident", "fall from height", "internal bleeding"],
+      "riskScore": 91,
+      "tier": "EMERGENCY",
+      "department": "Emergency",
+      "reason": "Potential internal bleeding and shock"
+    },
+    {
+      "name": "Diabetic Emergency",
+      "keywords": ["unconscious diabetic", "very low sugar", "diabetic coma", "insulin overdose", "hypoglycaemia severe", "sugar 30", "sugar very low"],
+      "riskScore": 88,
+      "tier": "EMERGENCY",
+      "department": "Endocrinology",
+      "reason": "Blood sugar crisis — organ damage without immediate glucose"
+    },
+    {
+      "name": "Severe Allergic Reaction (Anaphylaxis)",
+      "keywords": ["anaphylaxis", "throat swelling", "cannot swallow sudden", "epipen", "bee sting swelling throat", "allergic shock", "hives throat closing"],
+      "riskScore": 87,
+      "tier": "EMERGENCY",
+      "department": "Emergency",
+      "reason": "Airway can close completely within minutes"
+    },
+    {
+      "name": "Poisoning or Overdose",
+      "keywords": ["swallowed poison", "drug overdose", "chemical ingestion", "unconscious pills", "accidental poisoning", "rat poison", "sleeping pill overdose"],
+      "riskScore": 85,
+      "tier": "EMERGENCY",
+      "department": "Emergency",
+      "reason": "Toxin causing rapid organ damage — needs antidote or gastric lavage"
+    },
+    {
+      "name": "Severe Burns",
+      "keywords": ["large area burn", "burn face", "chemical burn", "electric burn", "fire burn", "third degree burn", "burn hands"],
+      "riskScore": 83,
+      "tier": "EMERGENCY",
+      "department": "Burns Unit",
+      "reason": "Infection, fluid loss and shock risk are immediate threats"
+    },
+    {
+      "name": "Hypertensive Crisis",
+      "keywords": ["very high blood pressure", "BP 180", "BP 200", "hypertensive crisis", "headache with very high BP", "blood pressure extremely high"],
+      "riskScore": 82,
+      "tier": "EMERGENCY",
+      "department": "Cardiology",
+      "reason": "Stroke or heart failure risk from BP spike"
+    },
+    {
+      "name": "Seizure / Epilepsy Active",
+      "keywords": ["seizure", "epilepsy attack", "convulsion", "fit", "shaking uncontrollably", "unconscious shaking", "first seizure ever"],
+      "riskScore": 80,
+      "tier": "EMERGENCY",
+      "department": "Neurology",
+      "reason": "Continuous seizure causes brain damage after 5 minutes"
+    },
+    {
+      "name": "Mental Health Crisis",
+      "keywords": ["suicidal", "want to kill myself", "self harm", "psychosis", "hearing voices", "very aggressive", "dangerous to others"],
+      "riskScore": 78,
+      "tier": "SERIOUS",
+      "department": "Psychiatry",
+      "reason": "Immediate risk to self or others"
+    },
+    {
+      "name": "High Fever with Rash",
+      "keywords": ["high fever rash", "red spots fever", "stiff neck fever", "fever purple spots", "meningitis symptoms", "dengue suspected", "fever rash child"],
+      "riskScore": 76,
+      "tier": "SERIOUS",
+      "department": "General Medicine",
+      "reason": "Possible meningitis or dengue — can deteriorate rapidly"
+    },
+    {
+      "name": "Thunderclap Headache",
+      "keywords": ["worst headache life", "thunderclap headache", "sudden severe headache", "headache and vomiting sudden", "headache never felt before"],
+      "riskScore": 74,
+      "tier": "SERIOUS",
+      "department": "Neurology",
+      "reason": "Possible subarachnoid haemorrhage — needs urgent CT scan"
+    },
+    {
+      "name": "Bone Fracture",
+      "keywords": ["broken bone", "fracture", "cannot move limb", "deformity after fall", "bone cracked", "ankle broken", "wrist fracture"],
+      "riskScore": 72,
+      "tier": "SERIOUS",
+      "department": "Orthopaedics",
+      "reason": "Needs imaging, immobilisation and pain management"
+    },
+    {
+      "name": "Severe Abdominal Pain",
+      "keywords": ["stomach pain severe", "appendicitis", "cannot stand abdominal pain", "vomiting blood", "abdomen rigid", "acute abdomen", "right lower abdomen pain"],
+      "riskScore": 72,
+      "tier": "SERIOUS",
+      "department": "Surgery",
+      "reason": "Possible appendicitis, perforation or bowel obstruction"
+    },
+    {
+      "name": "Child High Fever",
+      "keywords": ["baby high fever", "child temperature 103", "infant fever", "child seizure fever", "febrile child", "toddler very high temperature"],
+      "riskScore": 70,
+      "tier": "SERIOUS",
+      "department": "Paediatrics",
+      "reason": "Febrile seizure risk — children deteriorate faster than adults"
+    },
+    {
+      "name": "Chest Infection / Pneumonia",
+      "keywords": ["pneumonia", "chest infection", "breathing difficulty and fever", "coughing blood", "lung infection", "productive cough with fever high"],
+      "riskScore": 70,
+      "tier": "SERIOUS",
+      "department": "Pulmonology",
+      "reason": "Bacterial pneumonia needs antibiotics — can progress to sepsis"
+    },
+    {
+      "name": "Eye Injury",
+      "keywords": ["eye injury", "something in eye", "eye bleeding", "cannot see suddenly", "chemical in eye", "eye trauma", "vision loss sudden"],
+      "riskScore": 68,
+      "tier": "SERIOUS",
+      "department": "Ophthalmology",
+      "reason": "Permanent vision loss risk without urgent treatment"
+    },
+    {
+      "name": "Severe UTI / Kidney Infection",
+      "keywords": ["kidney pain", "back pain with high fever", "burning urination and fever", "pyelonephritis", "UTI with fever", "kidney infection"],
+      "riskScore": 62,
+      "tier": "SERIOUS",
+      "department": "Urology",
+      "reason": "Kidney involvement can progress to urosepsis"
+    },
+    {
+      "name": "Pregnancy Emergency",
+      "keywords": ["pregnancy bleeding", "labour pain early", "water broke", "severe pain pregnancy", "miscarriage", "pregnant and fell", "baby not moving"],
+      "riskScore": 80,
+      "tier": "EMERGENCY",
+      "department": "Gynaecology",
+      "reason": "Risk to mother and unborn child"
+    },
+    {
+      "name": "Severe Dehydration",
+      "keywords": ["severe dehydration", "no urine for 12 hours", "vomiting everything", "cannot keep water down", "diarrhea severe", "sunken eyes child"],
+      "riskScore": 65,
+      "tier": "SERIOUS",
+      "department": "General Medicine",
+      "reason": "Electrolyte imbalance and organ strain"
+    },
+    {
+      "name": "Chronic BP Follow-up",
+      "keywords": ["blood pressure check routine", "BP medicine refill", "hypertension follow up", "monthly blood pressure", "stable BP management"],
+      "riskScore": 42,
+      "tier": "CHECKUP",
+      "department": "General Medicine",
+      "reason": "Stable chronic condition — needs monitoring and prescription"
+    },
+    {
+      "name": "Diabetes Routine Management",
+      "keywords": ["diabetes follow up", "sugar check routine", "HbA1c test", "insulin adjustment routine", "diabetic review", "glucose monitoring"],
+      "riskScore": 40,
+      "tier": "CHECKUP",
+      "department": "Endocrinology",
+      "reason": "Routine management of stable diabetes"
+    },
+    {
+      "name": "Post-Surgery Check",
+      "keywords": ["stitches removal", "wound check", "post operation review", "dressing change", "suture removal", "after surgery checkup"],
+      "riskScore": 38,
+      "tier": "CHECKUP",
+      "department": "Surgery",
+      "reason": "Healing verification — important but not urgent"
+    },
+    {
+      "name": "Thyroid Follow-up",
+      "keywords": ["thyroid test result", "TSH check", "thyroid medicine adjustment", "hypothyroid routine", "hyperthyroid follow up"],
+      "riskScore": 35,
+      "tier": "CHECKUP",
+      "department": "Endocrinology",
+      "reason": "Routine hormone level monitoring"
+    },
+    {
+      "name": "Vaccination",
+      "keywords": ["vaccine", "vaccination", "booster shot", "immunisation", "flu shot", "covid vaccine", "tetanus shot"],
+      "riskScore": 20,
+      "tier": "CHECKUP",
+      "department": "Preventive Care",
+      "reason": "Preventive care — scheduled, not clinically urgent"
+    },
+    {
+      "name": "Common Cold",
+      "keywords": ["common cold", "runny nose", "sneezing", "mild cough", "sore throat mild", "blocked nose", "cold for two days"],
+      "riskScore": 18,
+      "tier": "MINOR",
+      "department": "General Medicine",
+      "reason": "Self-limiting viral illness — supportive care only"
+    },
+    {
+      "name": "Mild Headache",
+      "keywords": ["mild headache", "slight headache", "stress headache", "tension headache", "headache no other symptoms"],
+      "riskScore": 14,
+      "tier": "MINOR",
+      "department": "General Medicine",
+      "reason": "OTC medication usually sufficient"
+    },
+    {
+      "name": "Minor Skin Issue",
+      "keywords": ["small rash", "pimple", "skin irritation", "minor allergy rash", "dry skin", "itching mild", "insect bite minor"],
+      "riskScore": 12,
+      "tier": "MINOR",
+      "department": "Dermatology",
+      "reason": "Topical treatment sufficient"
+    },
+    {
+      "name": "Minor Cut or Scrape",
+      "keywords": ["small cut", "scrape", "minor wound", "paper cut", "scratch", "superficial wound", "finger cut small"],
+      "riskScore": 10,
+      "tier": "MINOR",
+      "department": "General Medicine",
+      "reason": "First aid level — clean, dress, done"
+    },
+    {
+      "name": "Prescription Refill",
+      "keywords": ["medicine refill", "tablet refill", "prescription renewal", "same medicine again", "need prescription", "monthly medicines"],
+      "riskScore": 8,
+      "tier": "MINOR",
+      "department": "General Medicine",
+      "reason": "Administrative — no clinical urgency"
+    }
+    
+  ]
+}
